@@ -26,13 +26,13 @@ terraform {
     }
   }
 
-# Terraform State Storage to Azure Storage Container, must be created from UI first
-  backend "azurerm" {
-    resource_group_name   = "terraform-storage-rg"
-    storage_account_name  = "terraformstatecharleli"
-    container_name        = "tfstatefiles"
-    key                   = "dev.terraform.tfstate"
-  }  
+# # Terraform State Storage to Azure Storage Container, must be created from UI first
+#   backend "azurerm" {
+#     resource_group_name   = "terraform-storage-rg"
+#     storage_account_name  = "terraformstatecharleli"
+#     container_name        = "tfstatefiles"
+#     key                   = "dev.terraform.tfstate"
+#   }  
 }
 
 

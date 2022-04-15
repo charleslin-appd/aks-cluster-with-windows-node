@@ -1,0 +1,6 @@
+# AppDynamics controller info
+controllerInfo:       
+  username: john.lin@customer.com                          
+  password: password                                 
+  accessKey: xxxxxxxxxxx
+  globalAccount: xxxxxxxx_xxxxxxx  # To be provided when using machineAgent Window Image

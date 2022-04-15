@@ -100,3 +100,17 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     Environment = "dev"
   }
 }
+
+resource "time_sleep" "wait_for_kube" {
+  depends_on = [azurerm_kubernetes_cluster.aks_cluster]
+  # GKE master endpoint may not be immediately accessible, resulting in error, waiting does the trick
+  create_duration = "30s"
+}
+
+resource "null_resource" "local_k8s_context" {
+  depends_on = [time_sleep.wait_for_kube]
+  provisioner "local-exec" {
+    # Update your local azure and kubectl credentials for the newly created cluster
+    command = "for i in 1 2 3 4 5; do az aks get-credentials --overwrite-existing --resource-group ${var.resource_group_name}-${var.environment} --name ${azurerm_resource_group.aks_rg.name}-cluster --admin && break || sleep 60; done"
+  }
+}

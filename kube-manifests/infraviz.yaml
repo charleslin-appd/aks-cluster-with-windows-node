@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: appdynamics-infraviz
+  namespace: appdynamics
+---
+apiVersion: cluster.appdynamics.com/v1alpha1
+kind: InfraViz
+metadata:
+  name: appdynamics-infraviz
+  namespace: appdynamics
+spec:
+  controllerUrl: "https://se-lab.saas.appdynamics.com"
+  nodeOS: all
+  image: "docker.io/appdynamics/machine-agent-analytics:latest"
+  imageWin: appdynamics/machine-agent-analytics:win-latest
+  account: "se-lab"
+  globalAccount: "se-demo-west_4b609009-9f90-4e00-929c-b60e543167bd"
+  enableContainerHostId: true
+  enableServerViz: true
+  netVizImage: appdynamics/machine-agent-netviz:latest
+  netVizPort: 3892
+  resources:
+    limits:
+      cpu: 500m
+      memory: "1G"
+    requests:
+      cpu: 200m
+      memory: "800M"

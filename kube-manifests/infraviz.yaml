@@ -18,6 +18,7 @@ spec:
   globalAccount: "se-demo-west_4b609009-9f90-4e00-929c-b60e543167bd"
   enableContainerHostId: true
   enableServerViz: true
+  enableDockerViz: false
   netVizImage: appdynamics/machine-agent-netviz:latest
   netVizPort: 3892
   resources:

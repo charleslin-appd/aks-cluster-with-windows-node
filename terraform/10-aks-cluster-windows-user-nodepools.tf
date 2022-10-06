@@ -7,7 +7,7 @@ resource "azurerm_kubernetes_cluster_node_pool" "win101" {
   min_count             = 1
   mode                  = "User"
   name                  = "win101"
-  orchestrator_version  = data.azurerm_kubernetes_service_versions.current.latest_version
+  orchestrator_version  = data.azurerm_kubernetes_service_versions.current.versions[1]
   os_disk_size_gb       = 50
   os_type               = "Windows" # Default is Linux, we can change to Windows
   vm_size               = "Standard_DS2_v2"
